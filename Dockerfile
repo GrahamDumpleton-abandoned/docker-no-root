@@ -9,9 +9,9 @@ RUN apt-get update && apt-get -yq dist-upgrade && \
 #    useradd -m -s /bin/bash -N -u 1001 default && \
 #    chmod g+w /etc/passwd
 
-RUN echo "auth requisite  pam_deny.so" >> /etc/pam.d/su && \
-    sed -i.bak -e 's/%admin/#%admin/' /etc/sudoers && \
-    sed -i.bak -e 's/%sudo/#%sudo/' /etc/sudoers && \
+RUN echo "auth requisite pam_deny.so" >> /etc/pam.d/su && \
+    sed -i.bak -e 's/^%admin/#%admin/' /etc/sudoers && \
+    sed -i.bak -e 's/^%sudo/#%sudo/' /etc/sudoers && \
     useradd -m -s /bin/bash -N -u 1001 default && \
     chmod g+w /etc/passwd
 
